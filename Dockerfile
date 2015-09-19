@@ -1,10 +1,8 @@
 FROM debian:stable
 MAINTAINER Andreas Krüger
-
-# Install deps.
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update -qq
-RUN apt-get install --no-install-recommends --no-install-suggests -y php5-cli php5-mysql gcc xinetd rsyslog
+
+RUN apt-get update -qq && apt-get install --no-install-recommends --no-install-suggests -y php5-cli php5-mysql gcc xinetd rsyslog
 
 RUN echo "agi             4573/tcp                        # FAST AGI entry" >> /etc/services
 
