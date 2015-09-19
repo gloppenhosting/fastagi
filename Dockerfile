@@ -1,9 +1,10 @@
-FROM centos:centos6
-MAINTAINER Doug Smith <info@laboratoryb.org>
-ENV build_date 2015-03-20
+FROM debian:stable
+MAINTAINER Andreas Krüger
 
-RUN yum update -y
-RUN yum install -y php php-mysql php-process git php-devel php-pear gcc tar wget unzip nano xinetd rsyslog
+# Install deps.
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update -qq
+RUN apt-get install --no-install-recommends --no-install-suggests -y php5-cli php5-mysql gcc xinetd rsyslog
 
 RUN echo "agi             4573/tcp                        # FAST AGI entry" >> /etc/services
 
